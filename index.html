@@ -16,10 +16,17 @@
         display: flex; flex-direction: column;
         align-items: center; padding: 15px;
     }
-    /* ロゴサイズ調整 */
-    header img.logo { height: 90px; margin-bottom: 10px; }
+    /* ロゴ */
+    header img.logo { height: 90px; margin-bottom: 8px; }
     @media (min-width: 768px) {
         header img.logo { height: 140px; }
+    }
+    /* 説明文 */
+    .header-description {
+        font-size: 14px;
+        color: #333;
+        margin-bottom: 10px;
+        text-align: center;
     }
     /* SNSアイコン */
     .sns-icons {
@@ -27,7 +34,8 @@
         margin-bottom: 10px;
     }
     .sns-icons img {
-        height: 50px; width: auto; margin: 0 8px;
+        height: 40px; /* 小さめに */
+        width: auto; margin: 0 6px;
         transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
     .sns-icons img:hover {
@@ -51,22 +59,24 @@
     .genre-buttons a:hover {
         background-color: #555;
     }
-    .category { padding: 20px; }
+    /* カテゴリ */
+    .category { 
+        padding: 20px;
+        scroll-margin-top: 260px; /* 固定ヘッダー分の余白 */
+    }
     .category h2 {
         margin-bottom: 10px; border-bottom: 2px solid #000; display: inline-block;
     }
+    /* グリッド */
     .grid {
         display: grid; gap: 10px;
     }
-    /* PC版は横5列 */
     @media (min-width: 1024px) {
         .grid { grid-template-columns: repeat(5, 1fr); }
     }
-    /* タブレット */
     @media (min-width: 768px) and (max-width: 1023px) {
         .grid { grid-template-columns: repeat(3, 1fr); }
     }
-    /* スマホ */
     @media (max-width: 767px) {
         .grid { grid-template-columns: repeat(2, 1fr); }
     }
@@ -74,7 +84,7 @@
         width: 100%; aspect-ratio: 1 / 1; object-fit: cover; display: block;
     }
     html { scroll-behavior: smooth; }
-    body { padding-top: 240px; }
+    body { padding-top: 260px; }
 </style>
 </head>
 <body>
@@ -82,7 +92,10 @@
 <div class="fixed-header">
     <header>
         <!-- ロゴ -->
-        <img src="logo.JPG" alt="Logo" class="logo">
+        <img src="logo.jpg" alt="Logo" class="logo">
+
+        <!-- 説明文 -->
+        <div class="header-description">ジャンルごとのアーカイブになります</div>
 
         <!-- SNSアイコン -->
         <div class="sns-icons">
@@ -130,10 +143,10 @@
         <a href="https://amzn.to/4mfjOwR" target="_blank"><img src="images/shoes/shoes_0006.jpg" alt=""></a>
         <a href="https://amzn.to/40FLzXf" target="_blank"><img src="images/shoes/shoes_0007.jpg" alt=""></a>
         <a href="https://amzn.to/4lknb4V" target="_blank"><img src="images/shoes/shoes_0008.jpg" alt=""></a>
-<a href="https://amzn.to/4mbj4ZY" target="_blank"><img src="images/shoes/shoes_0009.jpg" alt=""></a>
-<a href="https://amzn.to/4mbRGep" target="_blank"><img src="images/shoes/shoes_0010.jpg" alt=""></a>
-<a href="https://amzn.to/3UWHElm" target="_blank"><img src="images/shoes/shoes_0011.jpg" alt=""></a>
-<a href="https://amzn.to/45gZhCE" target="_blank"><img src="images/shoes/shoes_0012.jpg" alt=""></a>
+        <a href="https://amzn.to/4mbj4ZY" target="_blank"><img src="images/shoes/shoes_0009.jpg" alt=""></a>
+        <a href="https://amzn.to/4mbRGep" target="_blank"><img src="images/shoes/shoes_0010.jpg" alt=""></a>
+        <a href="https://amzn.to/3UWHElm" target="_blank"><img src="images/shoes/shoes_0011.jpg" alt=""></a>
+        <a href="https://amzn.to/45gZhCE" target="_blank"><img src="images/shoes/shoes_0012.jpg" alt=""></a>
     </div>
 </div>
 
@@ -144,20 +157,14 @@
         <a href="https://apps.apple.com/jp/app/mixcloud-music-mixes-live/id401206431"><img src="images/music_movie/music_0001.jpg" alt=""></a>
         <a href="https://open.spotify.com/album/2177HxL5nXqP5IWr7gjYLy?si=C1tWpYBlSMqNYlDTmtKjLA"><img src="images/music_movie/music_0002.jpg" alt=""></a>
         <a href="https://open.spotify.com/album/2nk1F6uY1FH7MXqhh9H1IS?si=9Glc23jQTISBSlpTtkkuoQ"><img src="images/music_movie/music_0003.jpg" alt=""></a>
-        <a href="https://tower.jp/item/5629290?srsltid=AfmBOooe3s6tKGpogGqhLpmyO-VnARdkyrfQKivjALV-fLnp4Bj2g2UB"><img src="images/music_movie/music_0004.jpg" alt=""></a>
+        <a href="https://tower.jp/item/5629290"><img src="images/music_movie/music_0004.jpg" alt=""></a>
         <a href="https://open.spotify.com/album/3EOrVV22ME6Otivn1dk2Vh?si=fl6NzfKOQaSWdphEmqe0eg"><img src="images/music_movie/music_0005.jpg" alt=""></a>
         <a href="https://open.spotify.com/album/7tzNXFrtTEff4rsn4BasCc?si=dfICvSpISTy4qSkLhD4CTQ"><img src="images/music_movie/music_0006.jpg" alt=""></a>
-
         <a href="https://open.spotify.com/album/57263zG8Md6XZ9lBUPPYCm?si=DnJ2I2H2S22Yqz_OF7gFCw"><img src="images/music_movie/music_0007.jpg" alt=""></a>
-
         <a href="https://open.spotify.com/album/7Jg3mi2ZugD260B3Azw5II?si=7Kck4SQZQayatjFuiFW8RQ"><img src="images/music_movie/music_0008.jpg" alt=""></a>
-
-<a href="https://tower.jp/item/5594352?srsltid=AfmBOophmf3gJKmOVQPpwapWiXdegIGB1NqzMUwMMogOPvnMYxNsOeln"><img src="images/music_movie/music_0009.jpg" alt=""></a>
-
-<a href="https://open.spotify.com/album/5wtE5aLX5r7jOosmPhJhhk?si=ojt38x-fTGSvP0A53x0-PA"><img src="images/music_movie/music_0010.jpg" alt=""></a>
-
-<a href="https://open.spotify.com/album/0pquf1NcG9FdiypBPwICu9?si=Cgf3whXxSHif7U_gd4vASA                      "><img src="images/music_movie/music_0011.jpg" alt=""></a>
-
+        <a href="https://tower.jp/item/5594352"><img src="images/music_movie/music_0009.jpg" alt=""></a>
+        <a href="https://open.spotify.com/album/5wtE5aLX5r7jOosmPhJhhk?si=ojt38x-fTGSvP0A53x0-PA"><img src="images/music_movie/music_0010.jpg" alt=""></a>
+        <a href="https://open.spotify.com/album/0pquf1NcG9FdiypBPwICu9?si=Cgf3whXxSHif7U_gd4vASA"><img src="images/music_movie/music_0011.jpg" alt=""></a>
     </div>
 </div>
 
@@ -166,10 +173,10 @@
     <h2>ACCE/OTHER</h2>
     <div class="grid">
         <a href="https://amzn.to/4ftHRWE"><img src="images/acce_other/acce_0001.jpg" alt=""></a>
-        <a href="https://www.uniqlo.com/jp/ja/products/E477573-000/00?colorDisplayCode=09&sizeDisplayCode=999&pldDisplayCode=000&utm_medium=social&utm_source=appshare"><img src="images/acce_other/acce_0002.jpg" alt=""></a>
-        <a href="https://amzn.to/3UWEYnO                   "><img src="images/acce_other/acce_0003.jpg" alt=""></a>
-        <a href="https://www.patagonia.jp/product/miir-16oz-pint-cup-fitzroy-surf-van/PRD71.html?cgid=root"><img src="images/acce_other/acce_0004.jpg" alt=""></a>
-        <a href="https://amzn.to/41ubmlq                                                                                         "><img src="images/acce_other/acce_0005.jpg" alt=""></a>
+        <a href="https://www.uniqlo.com/jp/ja/products/E477573-000/00"><img src="images/acce_other/acce_0002.jpg" alt=""></a>
+        <a href="https://amzn.to/3UWEYnO"><img src="images/acce_other/acce_0003.jpg" alt=""></a>
+        <a href="https://www.patagonia.jp/product/miir-16oz-pint-cup-fitzroy-surf-van/PRD71.html"><img src="images/acce_other/acce_0004.jpg" alt=""></a>
+        <a href="https://amzn.to/41ubmlq"><img src="images/acce_other/acce_0005.jpg" alt=""></a>
         <a href="https://amzn.to/47pwq08"><img src="images/acce_other/acce_0006.jpg" alt=""></a>
     </div>
 </div>
