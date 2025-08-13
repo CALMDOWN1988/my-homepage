@@ -55,26 +55,17 @@
     .category h2 {
         margin-bottom: 10px; border-bottom: 2px solid #000; display: inline-block;
     }
-    .grid {
-        display: grid; gap: 10px;
-    }
-    /* PC版は横5列 */
-    @media (min-width: 1024px) {
-        .grid { grid-template-columns: repeat(5, 1fr); }
-    }
-    /* タブレット */
-    @media (min-width: 768px) and (max-width: 1023px) {
-        .grid { grid-template-columns: repeat(3, 1fr); }
-    }
-    /* スマホ */
-    @media (max-width: 767px) {
-        .grid { grid-template-columns: repeat(2, 1fr); }
-    }
-    .grid img {
-        width: 100%; aspect-ratio: 1 / 1; object-fit: cover; display: block;
-    }
+    .grid { display: grid; gap: 10px; }
+    @media (min-width: 1024px) { .grid { grid-template-columns: repeat(5, 1fr); } }
+    @media (min-width: 768px) and (max-width: 1023px) { .grid { grid-template-columns: repeat(3, 1fr); } }
+    @media (max-width: 767px) { .grid { grid-template-columns: repeat(2, 1fr); } }
+    .grid img { width: 100%; aspect-ratio: 1/1; object-fit: cover; display: block; }
     html { scroll-behavior: smooth; }
-    body { padding-top: 240px; }
+    body { padding-top: 280px; }
+
+    /* BGMボタン */
+    #bgm-control { margin-bottom: 10px; padding: 6px 12px; background-color: #000; color: #fff; border: none; border-radius: 4px; cursor: pointer; font-size: 14px; }
+    #bgm-control:hover { background-color: #555; }
 </style>
 </head>
 <body>
@@ -83,6 +74,9 @@
     <header>
         <!-- ロゴ -->
         <img src="logo.JPG" alt="Logo" class="logo">
+
+        <!-- BGM ON/OFF -->
+        <button id="bgm-control">BGM ON</button>
 
         <!-- SNSアイコン -->
         <div class="sns-icons">
@@ -105,6 +99,9 @@
     </header>
 </div>
 
+<!-- 音楽ファイル（フリー素材） -->
+<audio id="bgm" loop></audio>
+
 <!-- CLOTH -->
 <div id="cloth" class="category">
     <h2>CLOTH</h2>
@@ -115,7 +112,7 @@
         <a href="https://www.uniqlo.com/jp/ja/products/E422992-000/00?colorDisplayCode=09&sizeDisplayCode=004&pldDisplayCode=000" target="_blank"><img src="images/cloth/cloth_0004.jpg" alt=""></a>
         <a href="https://amzn.to/3Uxmnyp" target="_blank"><img src="images/cloth/cloth_0005.jpg" alt=""></a>
         <a href="https://amzn.to/4kSudxl" target="_blank"><img src="images/cloth/cloth_0006.jpg" alt=""></a>
-       <https://amzn.to/4myE3FO" target="_blank"><img src="images/cloth/cloth_0007.jpg" alt=""></a>
+        <a href="https://amzn.to/4myE3FO" target="_blank"><img src="images/cloth/cloth_0007.jpg" alt=""></a>
     </div>
 </div>
 
@@ -131,10 +128,10 @@
         <a href="https://amzn.to/4mfjOwR" target="_blank"><img src="images/shoes/shoes_0006.jpg" alt=""></a>
         <a href="https://amzn.to/40FLzXf" target="_blank"><img src="images/shoes/shoes_0007.jpg" alt=""></a>
         <a href="https://amzn.to/4lknb4V" target="_blank"><img src="images/shoes/shoes_0008.jpg" alt=""></a>
-<a href="https://amzn.to/4mbj4ZY" target="_blank"><img src="images/shoes/shoes_0009.jpg" alt=""></a>
-<a href="https://amzn.to/4mbRGep" target="_blank"><img src="images/shoes/shoes_0010.jpg" alt=""></a>
-<a href="https://amzn.to/3UWHElm" target="_blank"><img src="images/shoes/shoes_0011.jpg" alt=""></a>
-<a href="https://amzn.to/45gZhCE" target="_blank"><img src="images/shoes/shoes_0012.jpg" alt=""></a>
+        <a href="https://amzn.to/4mbj4ZY" target="_blank"><img src="images/shoes/shoes_0009.jpg" alt=""></a>
+        <a href="https://amzn.to/4mbRGep" target="_blank"><img src="images/shoes/shoes_0010.jpg" alt=""></a>
+        <a href="https://amzn.to/3UWHElm" target="_blank"><img src="images/shoes/shoes_0011.jpg" alt=""></a>
+        <a href="https://amzn.to/45gZhCE" target="_blank"><img src="images/shoes/shoes_0012.jpg" alt=""></a>
     </div>
 </div>
 
@@ -153,9 +150,7 @@
         <a href="https://tower.jp/item/5594352?srsltid=AfmBOophmf3gJKmOVQPpwapWiXdegIGB1NqzMUwMMogOPvnMYxNsOeln"><img src="images/music_movie/music_0009.jpg" alt=""></a>
         <a href="https://open.spotify.com/album/5wtE5aLX5r7jOosmPhJhhk?si=ojt38x-fTGSvP0A53x0-PA"><img src="images/music_movie/music_0010.jpg" alt=""></a>
         <a href="https://open.spotify.com/album/0pquf1NcG9FdiypBPwICu9?si=Cgf3whXxSHif7U_gd4vASA"><img src="images/music_movie/music_0011.jpg" alt=""></a>
-<a href="https://amzn.to/4m8FtqV"><img src="images/music_movie/music_0012.jpg" alt=""></a>
-
-
+        <a href="https://amzn.to/4m8FtqV"><img src="images/music_movie/music_0012.jpg" alt=""></a>
     </div>
 </div>
 
@@ -165,15 +160,13 @@
     <div class="grid">
         <a href="https://amzn.to/4ftHRWE"><img src="images/acce_other/acce_0001.jpg" alt=""></a>
         <a href="https://www.uniqlo.com/jp/ja/products/E477573-000/00?colorDisplayCode=09&sizeDisplayCode=999&pldDisplayCode=000&utm_medium=social&utm_source=appshare"><img src="images/acce_other/acce_0002.jpg" alt=""></a>
-        <a href="https://amzn.to/3UWEYnO                   "><img src="images/acce_other/acce_0003.jpg" alt=""></a>
+        <a href="https://amzn.to/3UWEYnO"><img src="images/acce_other/acce_0003.jpg" alt=""></a>
         <a href="https://www.patagonia.jp/product/miir-16oz-pint-cup-fitzroy-surf-van/PRD71.html?cgid=root"><img src="images/acce_other/acce_0004.jpg" alt=""></a>
-        <a href="https://amzn.to/41ubmlq                                                                                         "><img src="images/acce_other/acce_0005.jpg" alt=""></a>
+        <a href="https://amzn.to/41ubmlq"><img src="images/acce_other/acce_0005.jpg" alt=""></a>
         <a href="https://amzn.to/47pwq08"><img src="images/acce_other/acce_0006.jpg" alt=""></a>
         <a href="https://arcteryx.jp/products/heliad-15-backpack-catalog?srsltid=AfmBOorx8pYQLgYz9Lf1idirqMGt6M_Wa4SsFL9ewbBxlyVxecEzUhjz"><img src="images/acce_other/acce_0007.jpg" alt=""></a>
-       <a href=“https://amzn.to/3UrBrO7"><img src="images/acce_other/acce_0008.jpg" alt=""></a>
-       <a href=“https://jp.daisonet.com/products/4550480473185"><img src="images/acce_other/acce_0009.jpg" alt=""></a>
-
-
+        <a href="https://amzn.to/3UrBrO7"><img src="images/acce_other/acce_0008.jpg" alt=""></a>
+        <a href="https://jp.daisonet.com/products/4550480473185"><img src="images/acce_other/acce_0009.jpg" alt=""></a>
     </div>
 </div>
 
@@ -207,6 +200,41 @@
         <a href="https://converse.co.jp/blogs/news/converse-jurassic-park-2508"><img src="images/pick_up/pick_up_0001.jpg" alt="PICK UP"></a>
     </div>
 </div>
+
+<script>
+const bgmFiles = [
+  'bgm/track1.mp3',
+  'bgm/track2.mp3',
+  'bgm/track3.mp3'
+];
+
+const bgm = document.getElementById('bgm');
+const btn = document.getElementById('bgm-control');
+let isPlaying = false;
+
+function playRandomBGM() {
+    const randomIndex = Math.floor(Math.random() * bgmFiles.length);
+    bgm.src = bgmFiles[randomIndex];
+    bgm.play();
+}
+
+btn.addEventListener('click', () => {
+    if(isPlaying){
+        bgm.pause();
+        btn.textContent = 'BGM ON';
+        isPlaying = false;
+    } else {
+        playRandomBGM();
+        btn.textContent = 'BGM OFF';
+        isPlaying = true;
+    }
+});
+
+// 曲終了時にランダムで次を再生
+bgm.addEventListener('ended', () => {
+    playRandomBGM();
+});
+</script>
 
 </body>
 </html>
