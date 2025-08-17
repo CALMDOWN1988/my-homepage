@@ -6,30 +6,68 @@
 <title>Calm Down 1988</title>
 <style>
 body { font-family: Arial, sans-serif; margin: 0; padding: 0; }
-.fixed-header { position: fixed; top: 0; left: 0; right: 0; background-color: #fff; border-bottom: 1px solid #ccc; z-index: 1000; }
-header { display: flex; flex-direction: column; align-items: center; padding: 15px; }
+.fixed-header {
+    position: fixed; top: 0; left: 0; right: 0;
+    background-color: #fff;
+    border-bottom: 1px solid #ccc;
+    z-index: 1000;
+}
+header {
+    display: flex; flex-direction: column;
+    align-items: center; padding: 15px;
+}
+/* ロゴサイズ調整 */
 header img.logo { height: 90px; margin-bottom: 10px; }
 @media (min-width: 768px) { header img.logo { height: 140px; } }
-.sns-icons { display: flex; justify-content: center; margin-bottom: 10px; }
-.sns-icons img { height: 50px; width: auto; margin: 0 8px; transition: transform 0.3s ease, box-shadow 0.3s ease; }
+/* SNSアイコン */
+.sns-icons {
+    display: flex; justify-content: center;
+    margin-bottom: 10px;
+}
+.sns-icons img {
+    height: 50px; width: auto; margin: 0 8px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
 .sns-icons img:hover { transform: scale(1.15); box-shadow: 0 4px 12px rgba(0,0,0,0.2); }
-.genre-buttons { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-bottom: 10px; }
-.genre-buttons a, .genre-buttons button { display: inline-block; padding: 6px 12px; background-color: #000; color: #fff; text-decoration: none; border-radius: 4px; font-size: 14px; transition: background-color 0.3s; border: none; cursor: pointer; }
+/* ジャンルボタン */
+.genre-buttons {
+    display: flex; flex-wrap: wrap; justify-content: center;
+    gap: 8px; margin-bottom: 10px;
+}
+.genre-buttons a, .genre-buttons button {
+    display: inline-block; padding: 6px 12px;
+    background-color: #000; color: #fff; text-decoration: none;
+    border-radius: 4px; font-size: 14px; transition: background-color 0.3s;
+    border: none; cursor: pointer;
+}
 .genre-buttons a:hover, .genre-buttons button:hover { background-color: #555; }
+
 .category { padding: 20px; }
-.category h2 { margin-bottom: 10px; border-bottom: 2px solid #000; display: inline-block; }
+.category h2 {
+    margin-bottom: 10px; border-bottom: 2px solid #000; display: inline-block;
+}
 .grid { display: grid; gap: 10px; }
+/* PC横5列 */
 @media (min-width: 1024px) { .grid { grid-template-columns: repeat(5, 1fr); } }
+/* タブレット3列 */
 @media (min-width: 768px) and (max-width: 1023px) { .grid { grid-template-columns: repeat(3, 1fr); } }
+/* スマホ2列 */
 @media (max-width: 767px) { .grid { grid-template-columns: repeat(2, 1fr); } }
 .grid img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; display: block; }
-.grid-coordinate { display: grid; gap: 10px; }
-@media (min-width: 1024px) { .grid-coordinate { grid-template-columns: repeat(3, 1fr); } }
-@media (min-width: 768px) and (max-width: 1023px) { .grid-coordinate { grid-template-columns: repeat(2, 1fr); } }
-@media (max-width: 767px) { .grid-coordinate { grid-template-columns: 1fr; } }
-.grid-coordinate img { width: 100%; height: auto; object-fit: contain; display: block; }
+
+/* COORDINATE専用 */
+.coordinate .grid img {
+    width: 100%;
+    height: auto;        /* 縦全体表示 */
+    object-fit: contain;
+    margin-bottom: 10px;
+}
+@media (max-width: 767px) {
+    .coordinate .grid img { margin-bottom: 15px; }
+}
+
 html { scroll-behavior: smooth; }
-body { padding-top: 300px; }
+body { padding-top: 260px; } /* header高さ調整 */
 </style>
 </head>
 <body>
@@ -37,12 +75,14 @@ body { padding-top: 300px; }
 <div class="fixed-header">
 <header>
     <img src="logo.JPG" alt="Logo" class="logo">
+
     <div class="sns-icons">
         <a href="https://www.instagram.com/calm_down_1988?" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram"></a>
         <a href="https://www.tiktok.com/@calm_down_1988?_t=ZS-8yapbv8ggEh&_r=1" target="_blank"><img src="images/tiktok.jpg" alt="TikTok"></a>
         <a href="https://youtube.com/@calm_down_1988?si=UGeUiOypQh190bZs" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/4/42/YouTube_icon_%282013-2017%29.png" alt="YouTube"></a>
         <a href="https://room.rakuten.co.jp/room_123eaeafdf/items" target="_blank"><img src="images/room.jpg" alt="楽天ROOM"></a>
     </div>
+
     <div class="genre-buttons">
         <a href="#cloth">CLOTH</a>
         <a href="#shoes">SHOES</a>
@@ -52,33 +92,22 @@ body { padding-top: 300px; }
         <a href="#camp">CAMP</a>
         <a href="#pickup">PICK UP</a>
         <a href="#coordinate">COORDINATE</a>
-        <button id="bgm-btn">BGM ON</button>
+        <button id="bgm-toggle">BGM ON</button>
     </div>
 </header>
 </div>
-
-<audio id="bgm-player" src="" preload="auto"></audio>
-<script>
-const bgmFiles = ["bgm/track1.mp3","bgm/track2.mp3","bgm/track3.mp3"];
-const bgmBtn = document.getElementById("bgm-btn");
-const bgmPlayer = document.getElementById("bgm-player");
-bgmBtn.addEventListener("click", () => {
-    const track = bgmFiles[Math.floor(Math.random() * bgmFiles.length)];
-    bgmPlayer.src = track;
-    bgmPlayer.play();
-});
-</script>
 
 <!-- CLOTH -->
 <div id="cloth" class="category">
 <h2>CLOTH</h2>
 <div class="grid">
-    <img src="images/cloth/cloth_0001.jpg" alt="">
-    <img src="images/cloth/cloth_0002.jpg" alt="">
-    <img src="images/cloth/cloth_0003.jpg" alt="">
-    <img src="images/cloth/cloth_0004.jpg" alt="">
-    <img src="images/cloth/cloth_0005.jpg" alt="">
-    <img src="images/cloth/cloth_0006.jpg" alt="">
+<a href="https://amzn.to/3J8Ps0K" target="_blank"><img src="images/cloth/cloth_0001.jpg" alt=""></a>
+<a href="https://amzn.to/3TXMRZV" target="_blank"><img src="images/cloth/cloth_0002.jpg" alt=""></a>
+<a href="https://amzn.to/46vBQXc" target="_blank"><img src="images/cloth/cloth_0003.jpg" alt=""></a>
+<a href="https://www.uniqlo.com/jp/ja/products/E422992-000/00?colorDisplayCode=09&sizeDisplayCode=004&pldDisplayCode=000" target="_blank"><img src="images/cloth/cloth_0004.jpg" alt=""></a>
+<a href="https://amzn.to/3Uxmnyp" target="_blank"><img src="images/cloth/cloth_0005.jpg" alt=""></a>
+<a href="https://amzn.to/4kSudxl" target="_blank"><img src="images/cloth/cloth_0006.jpg" alt=""></a>
+<a href="https://amzn.to/3ZyXh4T" target="_blank"><img src="images/cloth/cloth_0007.jpg" alt=""></a>
 </div>
 </div>
 
@@ -86,18 +115,18 @@ bgmBtn.addEventListener("click", () => {
 <div id="shoes" class="category">
 <h2>SHOES</h2>
 <div class="grid">
-    <img src="images/shoes/shoes_0001.jpg" alt="">
-    <img src="images/shoes/shoes_0002.jpg" alt="">
-    <img src="images/shoes/shoes_0003.jpg" alt="">
-    <img src="images/shoes/shoes_0004.jpg" alt="">
-    <img src="images/shoes/shoes_0005.jpg" alt="">
-    <img src="images/shoes/shoes_0006.jpg" alt="">
-    <img src="images/shoes/shoes_0007.jpg" alt="">
-    <img src="images/shoes/shoes_0008.jpg" alt="">
-    <img src="images/shoes/shoes_0009.jpg" alt="">
-    <img src="images/shoes/shoes_0010.jpg" alt="">
-    <img src="images/shoes/shoes_0011.jpg" alt="">
-    <img src="images/shoes/shoes_0012.jpg" alt="">
+<a href="https://amzn.to/4o3qzU6" target="_blank"><img src="images/shoes/shoes_0001.jpg" alt=""></a>
+<a href="https://converse.co.jp/collections/all-star-lgcy" target="_blank"><img src="images/shoes/shoes_0002.jpg" alt=""></a>
+<a href="https://amzn.to/4m4MBE8" target="_blank"><img src="images/shoes/shoes_0003.jpg" alt=""></a>
+<a href="https://amzn.to/4lE5s9o" target="_blank"><img src="images/shoes/shoes_0004.jpg" alt=""></a>
+<a href="https://converse.co.jp/pages/addict" target="_blank"><img src="images/shoes/shoes_0005.jpg" alt=""></a>
+<a href="https://amzn.to/4mfjOwR" target="_blank"><img src="images/shoes/shoes_0006.jpg" alt=""></a>
+<a href="https://amzn.to/40FLzXf" target="_blank"><img src="images/shoes/shoes_0007.jpg" alt=""></a>
+<a href="https://amzn.to/4lknb4V" target="_blank"><img src="images/shoes/shoes_0008.jpg" alt=""></a>
+<a href="https://amzn.to/4mbj4ZY" target="_blank"><img src="images/shoes/shoes_0009.jpg" alt=""></a>
+<a href="https://amzn.to/4mbRGep" target="_blank"><img src="images/shoes/shoes_0010.jpg" alt=""></a>
+<a href="https://amzn.to/3UWHElm" target="_blank"><img src="images/shoes/shoes_0011.jpg" alt=""></a>
+<a href="https://amzn.to/45gZhCE" target="_blank"><img src="images/shoes/shoes_0012.jpg" alt=""></a>
 </div>
 </div>
 
@@ -105,17 +134,18 @@ bgmBtn.addEventListener("click", () => {
 <div id="music" class="category">
 <h2>MUSIC/MOVIE</h2>
 <div class="grid">
-    <img src="images/music_movie/music_0001.jpg" alt="">
-    <img src="images/music_movie/music_0002.jpg" alt="">
-    <img src="images/music_movie/music_0003.jpg" alt="">
-    <img src="images/music_movie/music_0004.jpg" alt="">
-    <img src="images/music_movie/music_0005.jpg" alt="">
-    <img src="images/music_movie/music_0006.jpg" alt="">
-    <img src="images/music_movie/music_0007.jpg" alt="">
-    <img src="images/music_movie/music_0008.jpg" alt="">
-    <img src="images/music_movie/music_0009.jpg" alt="">
-    <img src="images/music_movie/music_0010.jpg" alt="">
-    <img src="images/music_movie/music_0011.jpg" alt="">
+<a href="https://apps.apple.com/jp/app/mixcloud-music-mixes-live/id401206431" target="_blank"><img src="images/music_movie/music_0001.jpg" alt=""></a>
+<a href="https://open.spotify.com/album/2177HxL5nXqP5IWr7gjYLy?si=C1tWpYBlSMqNYlDTmtKjLA" target="_blank"><img src="images/music_movie/music_0002.jpg" alt=""></a>
+<a href="https://open.spotify.com/album/2nk1F6uY1FH7MXqhh9H1IS?si=9Glc23jQTISBSlpTtkkuoQ" target="_blank"><img src="images/music_movie/music_0003.jpg" alt=""></a>
+<a href="https://tower.jp/item/5629290?srsltid=AfmBOooe3s6tKGpogGqhLpmyO-VnARdkyrfQKivjALV-fLnp4Bj2g2UB" target="_blank"><img src="images/music_movie/music_0004.jpg" alt=""></a>
+<a href="https://open.spotify.com/album/3EOrVV22ME6Otivn1dk2Vh?si=fl6NzfKOQaSWdphEmqe0eg" target="_blank"><img src="images/music_movie/music_0005.jpg" alt=""></a>
+<a href="https://open.spotify.com/album/7tzNXFrtTEff4rsn4BasCc?si=dfICvSpISTy4qSkLhD4CTQ" target="_blank"><img src="images/music_movie/music_0006.jpg" alt=""></a>
+<a href="https://open.spotify.com/album/57263zG8Md6XZ9lBUPPYCm?si=DnJ2I2H2S22Yqz_OF7gFCw" target="_blank"><img src="images/music_movie/music_0007.jpg" alt=""></a>
+<a href="https://open.spotify.com/album/7Jg3mi2ZugD260B3Azw5II?si=7Kck4SQZQayatjFuiFW8RQ" target="_blank"><img src="images/music_movie/music_0008.jpg" alt=""></a>
+<a href="https://tower.jp/item/5594352?srsltid=AfmBOophmf3gJKmOVQPpwapWiXdegIGB1NqzMUwMMogOPvnMYxNsOeln" target="_blank"><img src="images/music_movie/music_0009.jpg" alt=""></a>
+<a href="https://open.spotify.com/album/5wtE5aLX5r7jOosmPhJhhk?si=ojt38x-fTGSvP0A53x0-PA" target="_blank"><img src="images/music_movie/music_0010.jpg" alt=""></a>
+<a href="https://open.spotify.com/album/0pquf1NcG9FdiypBPwICu9?si=Cgf3whXxSHif7U_gd4vASA" target="_blank"><img src="images/music_movie/music_0011.jpg" alt=""></a>
+<a href="https://open.spotify.com/album/3IQZwVgq2vZLOxop8TxABp?si=abcdef" target="_blank"><img src="images/music_movie/music_0012.jpg" alt=""></a>
 </div>
 </div>
 
@@ -123,12 +153,12 @@ bgmBtn.addEventListener("click", () => {
 <div id="acce" class="category">
 <h2>ACCE/OTHER</h2>
 <div class="grid">
-    <img src="images/acce_other/acce_0001.jpg" alt="">
-    <img src="images/acce_other/acce_0002.jpg" alt="">
-    <img src="images/acce_other/acce_0003.jpg" alt="">
-    <img src="images/acce_other/acce_0004.jpg" alt="">
-    <img src="images/acce_other/acce_0005.jpg" alt="">
-    <img src="images/acce_other/acce_0006.jpg" alt="">
+<a href="https://amzn.to/4ftHRWE"><img src="images/acce_other/acce_0001.jpg" alt=""></a>
+<a href="https://www.uniqlo.com/jp/ja/products/E477573-000/00?colorDisplayCode=09&sizeDisplayCode=999&pldDisplayCode=000&utm_medium=social&utm_source=appshare"><img src="images/acce_other/acce_0002.jpg" alt=""></a>
+<a href="https://amzn.to/3UWEYnO"><img src="images/acce_other/acce_0003.jpg" alt=""></a>
+<a href="https://www.patagonia.jp/product/miir-16oz-pint-cup-fitzroy-surf-van/PRD71.html?cgid=root"><img src="images/acce_other/acce_0004.jpg" alt=""></a>
+<a href="https://amzn.to/41ubmlq"><img src="images/acce_other/acce_0005.jpg" alt=""></a>
+<a href="https://amzn.to/47pwq08"><img src="images/acce_other/acce_0006.jpg" alt=""></a>
 </div>
 </div>
 
@@ -136,10 +166,10 @@ bgmBtn.addEventListener("click", () => {
 <div id="gadget" class="category">
 <h2>GADGET</h2>
 <div class="grid">
-    <img src="images/gadget/gadget_0001.jpg" alt="">
-    <img src="images/gadget/gadget_0002.jpg" alt="">
-    <img src="images/gadget/gadget_0003.jpg" alt="">
-    <img src="images/gadget/gadget_0004.jpg" alt="">
+<a href="https://amzn.to/4on7UDa" target="_blank"><img src="images/gadget/gadget_0001.jpg" alt=""></a>
+<a href="https://amzn.to/3IX5WZK" target="_blank"><img src="images/gadget/gadget_0002.jpg" alt=""></a>
+<a href="https://amzn.to/3UauaCb" target="_blank"><img src="images/gadget/gadget_0003.jpg" alt=""></a>
+<a href="https://amzn.to/4mpS5tA" target="_blank"><img src="images/gadget/gadget_0004.jpg" alt=""></a>
 </div>
 </div>
 
@@ -147,11 +177,11 @@ bgmBtn.addEventListener("click", () => {
 <div id="camp" class="category">
 <h2>CAMP</h2>
 <div class="grid">
-    <img src="images/camp/camp_0001.jpg" alt="">
-    <img src="images/camp/camp_0002.jpg" alt="">
-    <img src="images/camp/camp_0003.jpg" alt="">
-    <img src="images/camp/camp_0004.jpg" alt="">
-    <img src="images/camp/camp_0005.jpg" alt="">
+<a href="https://amzn.to/4okv0Ky" target="_blank"><img src="images/camp/camp_0001.jpg" alt=""></a>
+<a href="https://amzn.to/4fsRsx6" target="_blank"><img src="images/camp/camp_0002.jpg" alt=""></a>
+<a href="https://amzn.to/4lSPecF" target="_blank"><img src="images/camp/camp_0003.jpg" alt=""></a>
+<a href="https://amzn.to/3HgZ3Sy" target="_blank"><img src="images/camp/camp_0004.jpg" alt=""></a>
+<a href="https://amzn.to/40O1LFS" target="_blank"><img src="images/camp/camp_0005.jpg" alt=""></a>
 </div>
 </div>
 
@@ -159,24 +189,47 @@ bgmBtn.addEventListener("click", () => {
 <div id="pickup" class="category">
 <h2>PICK UP</h2>
 <div class="grid">
-    <img src="images/pick_up/pick_up_0001.jpg" alt="">
+<a href="https://converse.co.jp/blogs/news/converse-jurassic-park-2508" target="_blank"><img src="images/pick_up/pick_up_0001.jpg" alt=""></a>
 </div>
 </div>
 
 <!-- COORDINATE -->
-<div id="coordinate" class="category">
+<div id="coordinate" class="category coordinate">
 <h2>COORDINATE</h2>
-<div class="grid-coordinate">
-    <img src="images/coordinate/coordinate_0001.jpg" alt="">
-    <img src="images/coordinate/coordinate_0002.jpg" alt="">
-    <img src="images/coordinate/coordinate_0003.jpg" alt="">
-    <img src="images/coordinate/coordinate_0004.jpg" alt="">
-    <img src="images/coordinate/coordinate_0005.jpg" alt="">
-    <img src="images/coordinate/coordinate_0006.jpg" alt="">
-    <img src="images/coordinate/coordinate_0007.jpg" alt="">
-    <img src="images/coordinate/coordinate_0008.jpg" alt="">
+<div class="grid">
+<img src="images/coordinate/coordinate_0001.jpg" alt="">
+<img src="images/coordinate/coordinate_0002.jpg" alt="">
+<img src="images/coordinate/coordinate_0003.jpg" alt="">
+<img src="images/coordinate/coordinate_0004.jpg" alt="">
+<img src="images/coordinate/coordinate_0005.jpg" alt="">
+<img src="images/coordinate/coordinate_0006.jpg" alt="">
+<img src="images/coordinate/coordinate_0007.jpg" alt="">
+<img src="images/coordinate/coordinate_0008.jpg" alt="">
 </div>
 </div>
+
+<audio id="bgm" loop></audio>
+
+<script>
+const bgm = document.getElementById('bgm');
+const toggleBtn = document.getElementById('bgm-toggle');
+const tracks = ['bgm/track1.mp3','bgm/track2.mp3','bgm/track3.mp3'];
+let isPlaying = false;
+
+toggleBtn.addEventListener('click', ()=>{
+    if(!isPlaying){
+        const randomTrack = tracks[Math.floor(Math.random()*tracks.length)];
+        bgm.src = randomTrack;
+        bgm.play();
+        toggleBtn.textContent = 'BGM OFF';
+        isPlaying = true;
+    } else {
+        bgm.pause();
+        toggleBtn.textContent = 'BGM ON';
+        isPlaying = false;
+    }
+});
+</script>
 
 </body>
 </html>
