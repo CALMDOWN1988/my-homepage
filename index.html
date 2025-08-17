@@ -5,190 +5,178 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Calm Down 1988</title>
 <style>
-    body { font-family: Arial, sans-serif; margin: 0; padding: 0; }
-    .fixed-header {
-        position: fixed; top: 0; left: 0; right: 0;
-        background-color: #fff; border-bottom: 1px solid #ccc; z-index: 1000;
-    }
-    header { display: flex; flex-direction: column; align-items: center; padding: 15px; }
-    header img.logo { height: 90px; margin-bottom: 10px; }
-    @media (min-width: 768px) { header img.logo { height: 140px; } }
-    .sns-icons { display: flex; justify-content: center; margin-bottom: 10px; }
-    .sns-icons img { height: 50px; width: auto; margin: 0 8px; transition: transform 0.3s ease, box-shadow 0.3s ease; }
-    .sns-icons img:hover { transform: scale(1.15); box-shadow: 0 4px 12px rgba(0,0,0,0.2); }
-    .genre-buttons { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-bottom: 10px; }
-    .genre-buttons a {
-        display: inline-block; padding: 6px 12px; background-color: #000; color: #fff; text-decoration: none; border-radius: 4px; font-size: 14px; transition: background-color 0.3s;
-    }
-    .genre-buttons a:hover { background-color: #555; }
-    .category { padding: 20px; }
-    .category h2 { margin-bottom: 10px; border-bottom: 2px solid #000; display: inline-block; }
-    .grid { display: grid; gap: 10px; }
-    @media (min-width: 1024px) { .grid { grid-template-columns: repeat(5, 1fr); } }
-    @media (min-width: 768px) and (max-width: 1023px) { .grid { grid-template-columns: repeat(3, 1fr); } }
-    @media (max-width: 767px) { .grid { grid-template-columns: repeat(2, 1fr); } }
-    .grid img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; display: block; }
-    html { scroll-behavior: smooth; }
-    body { padding-top: 260px; }
-    /* BGMボタン */
-    #bgm button { margin-right: 10px; padding: 6px 12px; font-size: 14px; }
+body { font-family: Arial, sans-serif; margin: 0; padding: 0; }
+.fixed-header { position: fixed; top: 0; left: 0; right: 0; background-color: #fff; border-bottom: 1px solid #ccc; z-index: 1000; }
+header { display: flex; flex-direction: column; align-items: center; padding: 15px; }
+header img.logo { height: 90px; margin-bottom: 10px; }
+@media (min-width: 768px) { header img.logo { height: 140px; } }
+.sns-icons { display: flex; justify-content: center; margin-bottom: 10px; }
+.sns-icons img { height: 50px; width: auto; margin: 0 8px; transition: transform 0.3s ease, box-shadow 0.3s ease; }
+.sns-icons img:hover { transform: scale(1.15); box-shadow: 0 4px 12px rgba(0,0,0,0.2); }
+.genre-buttons { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-bottom: 10px; }
+.genre-buttons a, .genre-buttons button { display: inline-block; padding: 6px 12px; background-color: #000; color: #fff; text-decoration: none; border-radius: 4px; font-size: 14px; transition: background-color 0.3s; border: none; cursor: pointer; }
+.genre-buttons a:hover, .genre-buttons button:hover { background-color: #555; }
+.category { padding: 20px; }
+.category h2 { margin-bottom: 10px; border-bottom: 2px solid #000; display: inline-block; }
+.grid { display: grid; gap: 10px; }
+@media (min-width: 1024px) { .grid { grid-template-columns: repeat(5, 1fr); } }
+@media (min-width: 768px) and (max-width: 1023px) { .grid { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 767px) { .grid { grid-template-columns: repeat(2, 1fr); } }
+.grid img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; display: block; }
+.grid-coordinate { display: grid; gap: 10px; }
+@media (min-width: 1024px) { .grid-coordinate { grid-template-columns: repeat(3, 1fr); } }
+@media (min-width: 768px) and (max-width: 1023px) { .grid-coordinate { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 767px) { .grid-coordinate { grid-template-columns: 1fr; } }
+.grid-coordinate img { width: 100%; height: auto; object-fit: contain; display: block; }
+html { scroll-behavior: smooth; }
+body { padding-top: 300px; }
 </style>
 </head>
 <body>
 
 <div class="fixed-header">
-    <header>
-        <img src="logo.JPG" alt="Logo" class="logo">
-        <div class="sns-icons">
-            <a href="https://www.instagram.com/calm_down_1988?" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram"></a>
-            <a href="https://www.tiktok.com/@calm_down_1988?_t=ZS-8yapbv8ggEh&_r=1" target="_blank"><img src="images/tiktok.jpg" alt="TikTok"></a>
-            <a href="https://youtube.com/@calm_down_1988?si=UGeUiOypQh190bZs" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/4/42/YouTube_icon_%282013-2017%29.png" alt="YouTube"></a>
-            <a href="https://room.rakuten.co.jp/room_123eaeafdf/items" target="_blank"><img src="images/room.jpg" alt="楽天ROOM"></a>
-        </div>
-        <div class="genre-buttons">
-            <a href="#cloth">CLOTH</a>
-            <a href="#shoes">SHOES</a>
-            <a href="#music">MUSIC/MOVIE</a>
-            <a href="#acce">ACCE/OTHER</a>
-            <a href="#gadget">GADGET</a>
-            <a href="#camp">CAMP</a>
-            <a href="#pickup">PICK UP</a>
-            <a href="#coodinate">COODINATE</a>
-            <a href="#bgm">BGM</a>
-        </div>
-    </header>
+<header>
+    <img src="logo.JPG" alt="Logo" class="logo">
+    <div class="sns-icons">
+        <a href="https://www.instagram.com/calm_down_1988?" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram"></a>
+        <a href="https://www.tiktok.com/@calm_down_1988?_t=ZS-8yapbv8ggEh&_r=1" target="_blank"><img src="images/tiktok.jpg" alt="TikTok"></a>
+        <a href="https://youtube.com/@calm_down_1988?si=UGeUiOypQh190bZs" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/4/42/YouTube_icon_%282013-2017%29.png" alt="YouTube"></a>
+        <a href="https://room.rakuten.co.jp/room_123eaeafdf/items" target="_blank"><img src="images/room.jpg" alt="楽天ROOM"></a>
+    </div>
+    <div class="genre-buttons">
+        <a href="#cloth">CLOTH</a>
+        <a href="#shoes">SHOES</a>
+        <a href="#music">MUSIC/MOVIE</a>
+        <a href="#acce">ACCE/OTHER</a>
+        <a href="#gadget">GADGET</a>
+        <a href="#camp">CAMP</a>
+        <a href="#pickup">PICK UP</a>
+        <a href="#coordinate">COORDINATE</a>
+        <button id="bgm-btn">BGM ON</button>
+    </div>
+</header>
 </div>
+
+<audio id="bgm-player" src="" preload="auto"></audio>
+<script>
+const bgmFiles = ["bgm/track1.mp3","bgm/track2.mp3","bgm/track3.mp3"];
+const bgmBtn = document.getElementById("bgm-btn");
+const bgmPlayer = document.getElementById("bgm-player");
+bgmBtn.addEventListener("click", () => {
+    const track = bgmFiles[Math.floor(Math.random() * bgmFiles.length)];
+    bgmPlayer.src = track;
+    bgmPlayer.play();
+});
+</script>
 
 <!-- CLOTH -->
 <div id="cloth" class="category">
-    <h2>CLOTH</h2>
-    <div class="grid">
-        <a href="https://amzn.to/3J8Ps0K" target="_blank"><img src="images/cloth/cloth_0001.jpg" alt=""></a>
-        <a href="https://amzn.to/3TXMRZV" target="_blank"><img src="images/cloth/cloth_0002.jpg" alt=""></a>
-        <a href="https://amzn.to/46vBQXc" target="_blank"><img src="images/cloth/cloth_0003.jpg" alt=""></a>
-        <a href="https://www.uniqlo.com/jp/ja/products/E422992-000/00?colorDisplayCode=09&sizeDisplayCode=004&pldDisplayCode=000" target="_blank"><img src="images/cloth/cloth_0004.jpg" alt=""></a>
-        <a href="https://amzn.to/3Uxmnyp" target="_blank"><img src="images/cloth/cloth_0005.jpg" alt=""></a>
-        <a href="https://amzn.to/4kSudxl" target="_blank"><img src="images/cloth/cloth_0006.jpg" alt=""></a>
-    </div>
+<h2>CLOTH</h2>
+<div class="grid">
+    <img src="images/cloth/cloth_0001.jpg" alt="">
+    <img src="images/cloth/cloth_0002.jpg" alt="">
+    <img src="images/cloth/cloth_0003.jpg" alt="">
+    <img src="images/cloth/cloth_0004.jpg" alt="">
+    <img src="images/cloth/cloth_0005.jpg" alt="">
+    <img src="images/cloth/cloth_0006.jpg" alt="">
+</div>
 </div>
 
 <!-- SHOES -->
 <div id="shoes" class="category">
-    <h2>SHOES</h2>
-    <div class="grid">
-        <a href="https://amzn.to/4o3qzU6" target="_blank"><img src="images/shoes/shoes_0001.jpg" alt=""></a>
-        <a href="https://converse.co.jp/collections/all-star-lgcy" target="_blank"><img src="images/shoes/shoes_0002.jpg" alt=""></a>
-        <a href="https://amzn.to/4m4MBE8" target="_blank"><img src="images/shoes/shoes_0003.jpg" alt=""></a>
-        <a href="https://amzn.to/4lE5s9o" target="_blank"><img src="images/shoes/shoes_0004.jpg" alt=""></a>
-        <a href="https://converse.co.jp/pages/addict" target="_blank"><img src="images/shoes/shoes_0005.jpg" alt=""></a>
-        <a href="https://amzn.to/4mfjOwR" target="_blank"><img src="images/shoes/shoes_0006.jpg" alt=""></a>
-        <a href="https://amzn.to/40FLzXf" target="_blank"><img src="images/shoes/shoes_0007.jpg" alt=""></a>
-        <a href="https://amzn.to/4lknb4V" target="_blank"><img src="images/shoes/shoes_0008.jpg" alt=""></a>
-    </div>
+<h2>SHOES</h2>
+<div class="grid">
+    <img src="images/shoes/shoes_0001.jpg" alt="">
+    <img src="images/shoes/shoes_0002.jpg" alt="">
+    <img src="images/shoes/shoes_0003.jpg" alt="">
+    <img src="images/shoes/shoes_0004.jpg" alt="">
+    <img src="images/shoes/shoes_0005.jpg" alt="">
+    <img src="images/shoes/shoes_0006.jpg" alt="">
+    <img src="images/shoes/shoes_0007.jpg" alt="">
+    <img src="images/shoes/shoes_0008.jpg" alt="">
+    <img src="images/shoes/shoes_0009.jpg" alt="">
+    <img src="images/shoes/shoes_0010.jpg" alt="">
+    <img src="images/shoes/shoes_0011.jpg" alt="">
+    <img src="images/shoes/shoes_0012.jpg" alt="">
+</div>
 </div>
 
 <!-- MUSIC/MOVIE -->
 <div id="music" class="category">
-    <h2>MUSIC/MOVIE</h2>
-    <div class="grid">
-        <a href="https://apps.apple.com/jp/app/mixcloud-music-mixes-live/id401206431"><img src="images/music_movie/music_0001.jpg" alt=""></a>
-        <a href="https://open.spotify.com/album/2177HxL5nXqP5IWr7gjYLy?si=C1tWpYBlSMqNYlDTmtKjLA"><img src="images/music_movie/music_0002.jpg" alt=""></a>
-        <a href="https://open.spotify.com/album/2nk1F6uY1FH7MXqhh9H1IS?si=9Glc23jQTISBSlpTtkkuoQ"><img src="images/music_movie/music_0003.jpg" alt=""></a>
-        <a href="https://tower.jp/item/5629290"><img src="images/music_movie/music_0004.jpg" alt=""></a>
-        <a href="https://open.spotify.com/album/3EOrVV22ME6Otivn1dk2Vh?si=fl6NzfKOQaSWdphEmqe0eg"><img src="images/music_movie/music_0005.jpg" alt=""></a>
-        <a href="https://open.spotify.com/album/7tzNXFrtTEff4rsn4BasCc?si=dfICvSpISTy4qSkLhD4CTQ"><img src="images/music_movie/music_0006.jpg" alt=""></a>
-    </div>
+<h2>MUSIC/MOVIE</h2>
+<div class="grid">
+    <img src="images/music_movie/music_0001.jpg" alt="">
+    <img src="images/music_movie/music_0002.jpg" alt="">
+    <img src="images/music_movie/music_0003.jpg" alt="">
+    <img src="images/music_movie/music_0004.jpg" alt="">
+    <img src="images/music_movie/music_0005.jpg" alt="">
+    <img src="images/music_movie/music_0006.jpg" alt="">
+    <img src="images/music_movie/music_0007.jpg" alt="">
+    <img src="images/music_movie/music_0008.jpg" alt="">
+    <img src="images/music_movie/music_0009.jpg" alt="">
+    <img src="images/music_movie/music_0010.jpg" alt="">
+    <img src="images/music_movie/music_0011.jpg" alt="">
+</div>
 </div>
 
 <!-- ACCE/OTHER -->
 <div id="acce" class="category">
-    <h2>ACCE/OTHER</h2>
-    <div class="grid">
-        <a href="https://amzn.to/4ftHRWE"><img src="images/acce_other/acce_0001.jpg" alt=""></a>
-        <a href="https://www.uniqlo.com/jp/ja/products/E477573-000/00"><img src="images/acce_other/acce_0002.jpg" alt=""></a>
-        <a href="https://amzn.to/3UWEYnO"><img src="images/acce_other/acce_0003.jpg" alt=""></a>
-        <a href="https://www.patagonia.jp/product/miir-16oz-pint-cup-fitzroy-surf-van/PRD71.html"><img src="images/acce_other/acce_0004.jpg" alt=""></a>
-    </div>
+<h2>ACCE/OTHER</h2>
+<div class="grid">
+    <img src="images/acce_other/acce_0001.jpg" alt="">
+    <img src="images/acce_other/acce_0002.jpg" alt="">
+    <img src="images/acce_other/acce_0003.jpg" alt="">
+    <img src="images/acce_other/acce_0004.jpg" alt="">
+    <img src="images/acce_other/acce_0005.jpg" alt="">
+    <img src="images/acce_other/acce_0006.jpg" alt="">
+</div>
 </div>
 
 <!-- GADGET -->
 <div id="gadget" class="category">
-    <h2>GADGET</h2>
-    <div class="grid">
-        <a href="https://amzn.to/4on7UDa"><img src="images/gadget/gadget_0001.jpg" alt=""></a>
-        <a href="https://amzn.to/3IX5WZK"><img src="images/gadget/gadget_0002.jpg" alt=""></a>
-    </div>
+<h2>GADGET</h2>
+<div class="grid">
+    <img src="images/gadget/gadget_0001.jpg" alt="">
+    <img src="images/gadget/gadget_0002.jpg" alt="">
+    <img src="images/gadget/gadget_0003.jpg" alt="">
+    <img src="images/gadget/gadget_0004.jpg" alt="">
+</div>
 </div>
 
 <!-- CAMP -->
 <div id="camp" class="category">
-    <h2>CAMP</h2>
-    <div class="grid">
-        <a href="https://amzn.to/4okv0Ky"><img src="images/camp/camp_0001.jpg" alt=""></a>
-        <a href="https://amzn.to/4fsRsx6"><img src="images/camp/camp_0002.jpg" alt=""></a>
-    </div>
+<h2>CAMP</h2>
+<div class="grid">
+    <img src="images/camp/camp_0001.jpg" alt="">
+    <img src="images/camp/camp_0002.jpg" alt="">
+    <img src="images/camp/camp_0003.jpg" alt="">
+    <img src="images/camp/camp_0004.jpg" alt="">
+    <img src="images/camp/camp_0005.jpg" alt="">
+</div>
 </div>
 
 <!-- PICK UP -->
 <div id="pickup" class="category">
-    <h2>PICK UP</h2>
-    <div class="grid">
-        <a href="https://converse.co.jp/blogs/news/converse-jurassic-park-2508"><img src="images/pick_up/pick_up_0001.jpg" alt=""></a>
-    </div>
+<h2>PICK UP</h2>
+<div class="grid">
+    <img src="images/pick_up/pick_up_0001.jpg" alt="">
+</div>
 </div>
 
-<!-- COODINATE -->
-<div id="coodinate" class="category">
-    <h2>COODINATE</h2>
-    <div class="grid">
-        <a href="https://room.rakuten.co.jp/1" target="_blank"><img src="images/coodinate/coodinate_0001.jpg" alt=""></a>
-        <a href="https://room.rakuten.co.jp/2" target="_blank"><img src="images/coodinate/coodinate_0002.jpg" alt=""></a>
-        <a href="https://room.rakuten.co.jp/3" target="_blank"><img src="images/coodinate/coodinate_0003.jpg" alt=""></a>
-        <a href="https://room.rakuten.co.jp/4" target="_blank"><img src="images/coodinate/coodinate_0004.jpg" alt=""></a>
-        <a href="https://room.rakuten.co.jp/5" target="_blank"><img src="images/coodinate/coodinate_0005.jpg" alt=""></a>
-        <a href="https://room.rakuten.co.jp/6" target="_blank"><img src="images/coodinate/coodinate_0006.jpg" alt=""></a>
-        <a href="https://room.rakuten.co.jp/7" target="_blank"><img src="images/coodinate/coodinate_0007.jpg" alt=""></a>
-        <a href="https://room.rakuten.co.jp/8" target="_blank"><img src="images/coodinate/coodinate_0008.jpg" alt=""></a>
-    </div>
+<!-- COORDINATE -->
+<div id="coordinate" class="category">
+<h2>COORDINATE</h2>
+<div class="grid-coordinate">
+    <img src="images/coordinate/coordinate_0001.jpg" alt="">
+    <img src="images/coordinate/coordinate_0002.jpg" alt="">
+    <img src="images/coordinate/coordinate_0003.jpg" alt="">
+    <img src="images/coordinate/coordinate_0004.jpg" alt="">
+    <img src="images/coordinate/coordinate_0005.jpg" alt="">
+    <img src="images/coordinate/coordinate_0006.jpg" alt="">
+    <img src="images/coordinate/coordinate_0007.jpg" alt="">
+    <img src="images/coordinate/coordinate_0008.jpg" alt="">
 </div>
-
-<!-- BGM -->
-<div id="bgm" class="category">
-    <h2>BGM</h2>
-    <div>
-        <button id="bgm-on">BGM ON</button>
-        <button id="bgm-off">BGM OFF</button>
-        <audio id="bgm-player" controls style="display:none;">
-            <source id="bgm-source" src="" type="audio/mpeg">
-            お使いのブラウザは audio タグに対応していません。
-        </audio>
-    </div>
 </div>
-
-<script>
-    const bgmTracks = ['bgm/track1.mp3','bgm/track2.mp3','bgm/track3.mp3'];
-    const bgmPlayer = document.getElementById('bgm-player');
-    const bgmSource = document.getElementById('bgm-source');
-    const bgmOnBtn = document.getElementById('bgm-on');
-    const bgmOffBtn = document.getElementById('bgm-off');
-
-    function playRandomBGM(){
-        const idx = Math.floor(Math.random()*bgmTracks.length);
-        bgmSource.src = bgmTracks[idx];
-        bgmPlayer.load();
-        bgmPlayer.play();
-    }
-
-    bgmOnBtn.addEventListener('click',()=>{
-        playRandomBGM();
-        bgmPlayer.style.display='block';
-    });
-    bgmOffBtn.addEventListener('click',()=>{
-        bgmPlayer.pause();
-        bgmPlayer.currentTime=0;
-    });
-    bgmPlayer.addEventListener('ended', playRandomBGM);
-</script>
 
 </body>
 </html>
