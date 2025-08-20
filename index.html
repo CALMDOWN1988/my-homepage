@@ -7,7 +7,7 @@
 <style>
 body { font-family: Arial, sans-serif; margin: 0; padding: 0; }
 .fixed-header {
-    position: fixed; top: 0; left: 0; right: 0;
+    position: fixed; top: 0; left: 0; right: 0; 
     background-color: #fff;
     border-bottom: 1px solid #ccc;
     z-index: 1000;
@@ -58,7 +58,7 @@ header img.logo { height: 90px; margin-bottom: 10px; }
 /* COORDINATE専用 */
 .coordinate .grid img {
     width: 100%;
-    height: auto;        /* 縦全体表示 */
+    height: auto;        
     object-fit: contain;
     margin-bottom: 10px;
 }
@@ -86,12 +86,13 @@ body { padding-top: 260px; } /* header高さ調整 */
     <div class="genre-buttons">
         <a href="#cloth">CLOTH</a>
         <a href="#shoes">SHOES</a>
-        <a href="#music">MUSIC/MOVIE</a>
+        <a href="#music">MUSIC/MOVIE/BOOK</a>
         <a href="#acce">ACCE/OTHER</a>
         <a href="#gadget">GADGET</a>
         <a href="#camp">CAMP</a>
         <a href="#pickup">PICK UP</a>
         <a href="#coordinate">COORDINATE</a>
+        <a href="https://calmdown1988.myshopify.com/" target="_blank">ONLINE SHOP</a>
         <button id="bgm-toggle">BGM ON</button>
     </div>
 </header>
@@ -130,9 +131,9 @@ body { padding-top: 260px; } /* header高さ調整 */
 </div>
 </div>
 
-<!-- MUSIC/MOVIE -->
+<!-- MUSIC/MOVIE/BOOK -->
 <div id="music" class="category">
-<h2>MUSIC/MOVIE</h2>
+<h2>MUSIC/MOVIE/BOOK</h2>
 <div class="grid">
 <a href="https://apps.apple.com/jp/app/mixcloud-music-mixes-live/id401206431" target="_blank"><img src="images/music_movie/music_0001.jpg" alt=""></a>
 <a href="https://open.spotify.com/album/2177HxL5nXqP5IWr7gjYLy?si=C1tWpYBlSMqNYlDTmtKjLA" target="_blank"><img src="images/music_movie/music_0002.jpg" alt=""></a>
@@ -211,6 +212,7 @@ body { padding-top: 260px; } /* header高さ調整 */
 <audio id="bgm" loop></audio>
 
 <script>
+// BGM ON/OFF
 const bgm = document.getElementById('bgm');
 const toggleBtn = document.getElementById('bgm-toggle');
 const tracks = ['bgm/track1.mp3','bgm/track2.mp3','bgm/track3.mp3'];
@@ -222,14 +224,4 @@ toggleBtn.addEventListener('click', ()=>{
         bgm.src = randomTrack;
         bgm.play();
         toggleBtn.textContent = 'BGM OFF';
-        isPlaying = true;
-    } else {
-        bgm.pause();
-        toggleBtn.textContent = 'BGM ON';
-        isPlaying = false;
-    }
-});
-</script>
-
-</body>
-</html>
+        is
